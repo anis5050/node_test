@@ -1,0 +1,39 @@
+{
+  "name": "chayma",
+  "version": "1.0.0",
+  "description": "jhsfdds",
+  "main": "server.js",
+  "scripts": {
+    "test": "jhdjd",
+    "nodemon": "./node_modules/.bin/nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "hjf"
+  },
+  "keywords": [
+    "hjf"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "actions-on-google": "^2.13.0",
+    "bcrypt": "^5.0.0",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "dialogflow-fulfillment": "^0.6.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.16",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.16",
+    "python-shell": "^2.0.3",
+    "rand-token": "^1.0.1",
+    "socket.io": "^3.0.4",
+    "swagger-ui-express": "^4.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

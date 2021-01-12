@@ -1,0 +1,870 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Yet Another Node.js Blogg Application API",
+      "description": "Yet Another Node.js Blogg Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "crud user"
+      },
+      {
+        "name": "Products",
+        "description": "crud product"
+      },
+      {
+        "name": "orders",
+        "description": "crud orders"
+      },
+      {
+        "name": "catalogs",
+        "description": "crud catalog"
+      }
+
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json",
+      "multipart/form-data"
+
+    ],
+    "produces": [
+      "application/json",
+      "multipart/form-data"
+    ],
+    "paths": {
+      "/users/adduser": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "description": "Create new user in system",
+          "parameters": [
+            {
+              "name": "name",
+              "in": "formData",
+              "required":true,
+
+              "description": "User that we want to create",
+              "type":"string"
+             
+            },
+            {
+                "name": "lastname",
+                "in": "formData",
+                "required":true,
+  
+                "description": "User that we want to create",
+                "type":"string"
+               
+              },
+              {
+                "name": "email",
+                "in": "formData",
+                "required":true,
+  
+                "description": "User that we want to create",
+                "type":"string"
+               
+              },
+              {
+                "name": "password",
+                "in": "formData",
+                "required":true,
+  
+                "description": "User that we want to create",
+                "type":"string"
+               
+              },              
+              {
+                "name": "phone",
+                "in": "formData",
+                "required":true,
+  
+                "description": "User that we want to create",
+                "type":"string"
+               
+              },
+              {
+                "name": "image",
+                "in": "formData",
+                "required":true,
+  
+                "description": "User that we want to create",
+                "type":"file",
+                "items":
+                {
+                    "name":"image",
+                    "type":"file",
+                    "in":"formData",
+                    "required":true,
+                    "description": "User that we want to create"
+
+                }
+              },
+              {
+                "name": "orders",
+                "in": "formData",
+                "required":true,
+  
+                "description": "User that we want to create",
+                "type":"string"
+               
+              }
+          ],
+          "produces": [
+            "multipart/form-data",
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New user is created",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }       
+      },
+      "/users/allUser": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "description": "get all user in system",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "get all user"
+            
+            }
+          }
+        }
+        
+      },
+     "/users/oneUser/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "User that we want to get by id",
+              "type":"string"
+              
+            }
+          ],
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "description": "get all user in system",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "get user by id"
+            
+            }
+          }
+        }
+        
+      },
+      "/users/deleteuser/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "User that we want to delete",
+              "type":"string"             
+            }
+          ],
+        "delete": {
+          "tags": [
+            "Users"
+          ],
+          "description": "delete",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "delete user by id"
+            
+            }
+          }
+        }       
+      },
+      "/users/updateuser/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "User that we want to update",
+              "type":"string"             
+            },
+            {
+                "name": "user",
+                "in": "body",
+                "description": "User that we want to update",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+          ],
+        "put": {
+          "tags": [
+            "Users"
+          ],
+          "description": "update",
+          
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "update user by id"
+            
+            }
+          }
+        }       
+      },
+      "/users/authenUser": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "description": "authentification user",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "user that we want to authentificate",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "authentificate",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }  
+      },
+      "/users/forgot": {
+        "put": {
+          "tags": [
+            "USERS"
+          ],
+          "description": "authentification user",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "user that we want to authentificate",
+              "schema": {
+                "$ref": "#/definitions/USER"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "authentificate",
+              "schema": {
+                "$ref": "#/definitions/USER"
+              }
+            }
+          }
+        }  
+      },
+      "/users/reset": {
+        "put": {
+          "tags": [
+            "USERS"
+          ],
+          "description": "authentification user",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "user that we want to authentificate",
+              "schema": {
+                "$ref": "#/definitions/USER"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "authentificate",
+              "schema": {
+                "$ref": "#/definitions/USER"
+              }
+            }
+          }
+        }  
+      },
+     
+     "/product/addProduct": {
+        "post": {
+          "tags": [
+            "Products"
+          ],
+          "description": "Create new product in system",
+          "parameters": [
+            {
+              "name": "product",
+              "in": "body",
+              "description": "Product that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New product is created",
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          }
+        }  
+      },
+      "/product/allProduct": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "description": "get all products in system",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "all products"
+              
+            }
+          }
+        }
+        
+      },
+      "/product/oneProduct/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "product that we want to get by id",
+              "type":"string"             
+            }
+          ],
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "description": "get one product by id",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "get product by id"
+            }
+          }
+        }      
+      },
+      "/product/deleteProduct/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "product that we want to delete",
+              "type":"string"             
+            }
+          ],
+        "delete": {
+          "tags": [
+            "Products"
+          ],
+          "description": "delete",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "delete product by id"
+            
+            }
+          }
+        }       
+      },
+      "/product/updateProduct/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "product that we want to update",
+              "type":"string"             
+            },
+            {
+                "name": "Product",
+                "in": "body",
+                "description": "product that we want to update",
+                "schema": {
+                  "$ref": "#/definitions/Product"
+                }
+              }
+          ],
+        "put": {
+          "tags": [
+            "Products"
+          ],
+          "description": "update",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "update product by id"
+            
+            }
+          }
+        }       
+      },
+      "/order/addOrder": {
+        "post": {
+          "tags": [
+            "orders"
+          ],
+          "description": "Create new order in system",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User that we want to create",
+              "schema": {
+                "$ref": "#/definitions/order"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New order is created",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+        
+      },
+      "/order/allorders": {
+        "get": {
+          "tags": [
+            "orders"
+          ],
+          "description": "get all order in system",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New user is created"
+              
+            }
+          }
+        }
+        
+      },
+      "/order/oneOrder/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "order that we want to get by id",
+              "type":"string"
+              
+            }
+          ],
+        "get": {
+          "tags": [
+            "orders"
+          ],
+          "description": "get one order by id",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "get order by id"
+            
+            }
+          }
+        }
+        
+      },
+      "/order/deleteOrder/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "order that we want to delete",
+              "type":"string"             
+            }
+          ],
+        "delete": {
+          "tags": [
+            "orders"
+          ],
+          "description": "delete",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "delete order by id"
+            
+            }
+          }
+        }       
+      },
+      "/order/updateOrder/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "order that we want to update",
+              "type":"string"             
+            },
+            {
+                "name": "order",
+                "in": "body",
+                "description": "order that we want to update",
+                "schema": {
+                  "$ref": "#/definitions/order"
+                }
+              }
+          ],
+        "put": {
+          "tags": [
+            "orders"
+          ],
+          "description": "update",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "update order by id"
+            
+            }
+          }
+        }       
+      },
+      "/catalog/addCatalog": {
+        "post": {
+          "tags": [
+            "catalogs"
+          ],
+          "description": "Create new catalog in system",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User that we want to create",
+              "schema": {
+                "$ref": "#/definitions/order"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New order is created",
+              "schema": {
+                "$ref": "#/definitions/catalog"
+              }
+            }
+          }
+        }
+        
+      },
+      "/catalog/allCatalog": {
+        "get": {
+          "tags": [
+            "catalogs"
+          ],
+          "description": "get all catalogs in system",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New user is created"
+              
+            }
+          }
+        }
+        
+      },
+      "/catalog/oneCatalog/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "catalog that we want to get by id",
+              "type":"string"
+              
+            }
+          ],
+        "get": {
+          "tags": [
+            "catalogs"
+          ],
+          "description": "get one catalog by id",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "get catalog by id"
+            
+            }
+          }
+        }
+        
+      },
+      "/catalog/deleteCatalog/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "catalog that we want to delete",
+              "type":"string"             
+            }
+          ],
+        "delete": {
+          "tags": [
+            "catalogs"
+          ],
+          "description": "delete",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "delete catalog by id"
+            
+            }
+          }
+        }       
+      },
+      "/catalog/updateCatalog/{id}": {
+        "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required":true,
+              "description": "catalog that we want to update",
+              "type":"string"             
+            },{
+                "name": "catalog",
+                "in": "body",
+                "description": "catalog that we want to update",
+                "schema": {
+                  "$ref": "#/definitions/catalog"
+                }
+              }
+          ],
+        "put": {
+          "tags": [
+            "catalogs"
+          ],
+          "description": "update",
+          
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "update catalog by id"
+            
+            }
+          }
+        }       
+      }
+    },
+    "definitions": {
+      "User": {
+          "required":[
+              "email",
+              "password"
+              
+              
+          ],
+              
+          
+        
+
+        "properties": {           
+          "email": {
+            "type": "string"           
+          },          
+          "password": {
+            "type": "string"           
+          }
+          
+          
+        }
+      },
+      "USER": {
+        "required":[
+            "email",
+            "resetLink",
+            "newPass"
+        ],
+
+      "properties": {           
+        "email": {
+          "type": "string"           
+        } ,
+        "newPass": {
+            "type": "string"           
+          } ,
+          "resetLink": {
+            "data": "string" ,
+            "default":""         
+          }        
+        
+        
+        
+      }
+    },
+      "Product": {
+        
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"           
+          },
+          "description": {
+            "type": "string"            
+          },
+          "quantity": {
+            "type": "number" 
+          },
+          "orders": {
+            "type": "string" 
+          }
+        }
+      } ,
+      "order": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"            
+          },
+          "user": {
+            "type": "string"            
+          },
+          "products":
+          {
+            "type": "string" 
+          }
+        }
+      },
+      "catalog": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"            
+          }
+        }
+      } 
+    },
+        
+        "Users": {
+          "type": "array",
+          "$ref": "#/definitions/User"
+        },
+        "Products": {
+            "type": "array",
+            "$ref": "#/definitions/Product"
+          },
+          "orders": {
+            "type": "array",
+            "$ref": "#/definitions/order"
+          },
+          "catalogs": {
+            "type": "array",
+            "$ref": "#/definitions/catalog"
+          },
+          "USERS": {
+            "type": "array",
+            "$ref": "#/definitions/USER"
+          }
+      }
+  
